@@ -3,7 +3,7 @@ module ASME_Materials
 # Load Packages
 using ColorSchemes, DataFrames, GLMakie, Interpolations, NativeFileDialog, OrderedCollections,
         SimpleNonlinearSolve, Term, XLSX
-import KM620
+import Div3.KM620
 
 # Define Functions
 include("Input.jl")

@@ -1,14 +1,17 @@
 name = "ASME_Materials"
 uuid = "e596c8da-274e-4954-bc0b-801dea4796a4"
-authors = ["nathanrboyer <nathanrobertboyer@gmail.com>"]
 version = "0.1.0"
+authors = ["nathanrboyer <nathanrobertboyer@gmail.com>"]
+
+[workspace]
+projects = ["test"]
 
 [deps]
 ColorSchemes = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Div3 = "ab82a220-3fe6-4d48-8470-cb6afb7bc69a"
 GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
-KM620 = "0ccbab1c-04f8-4773-914b-89ad8e9d3a96"
 NativeFileDialog = "e1fe445b-aa65-4df4-81c1-2041507f0fd4"
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 SimpleNonlinearSolve = "727e6d20-b764-4bd8-a329-72de5adea6c7"
@@ -18,6 +21,7 @@ XLSX = "fdbf4ff8-1666-58a4-91e7-1b58723a45e0"
 [compat]
 ColorSchemes = "3"
 DataFrames = "1"
+Div3 = "0.0.1"
 GLMakie = "0.5 - 0.13"
 Interpolations = "0.13 - 0.16"
 NativeFileDialog = "0.2"
@@ -27,4 +31,4 @@ Term = "1 - 2"
 XLSX = "0.8 - 0.10"
 
 [sources]
-KM620 = {url = "https://github.com/nathanrboyer/KM620.jl"}
+Div3 = {url = "https://github.com/nathanrboyer/Div3.jl.git"}
