@@ -165,7 +165,7 @@ export get_row_data
 Finds the stress value `σ_p` where true strain `ϵ_ts` becomes nonlinear
 and plasticity begins (`γ_1 + γ_2 == ϵ_p`) for each temperature row in the input `table`.
 
-This is done by finding the root of the function `KM620.plasticity` with NonlinearSolve.jl.
+This is done by finding the root of the function `KM6.plasticity` with NonlinearSolve.jl.
 
 # Arguments
 - `table::DataFrame`: material data table
@@ -183,7 +183,7 @@ function find_proportional_limit(table::DataFrame, searchrange::Tuple=(1e1, 1e6)
         "`searchrange` must be a `Tuple{T,T} where T<:Number` (two elements of the same type)"
     )
     σ_p = Float64[]
-    problem = IntervalNonlinearProblem(KM620.plasticity, searchrange)
+    problem = IntervalNonlinearProblem(KM6.plasticity, searchrange)
     for row in eachrow(table)
         problem = remake(problem, p=row)
         solution = solve(problem)
@@ -458,17 +458,17 @@ function create_master_table(
     df.ν = interpolants.poisson_interp.(df.T)
 
     # KM-620 Scalar Quantities
-    KM620_gdf = groupby(KM620.coefficients_table, "Material")
+    KM620_gdf = groupby(KM6.coefficients_table, "Material")
     KM620_table_row = KM620_gdf[(material_category,)] |> only
-    df.R = KM620.R.(df.σ_ys, df.σ_uts)
-    df.K = KM620.K.(df.R)
-    df.ϵ_ys = fill(KM620.ϵ_ys(), nrow(df))
+    df.R = KM6.R.(df.σ_ys, df.σ_uts)
+    df.K = KM6.K.(df.R)
+    df.ϵ_ys = fill(KM6.ϵ_ys(), nrow(df))
     df.ϵ_p = fill(KM620_table_row."ϵₚ", nrow(df))
-    df.m_1 = KM620.m_1.(df.R, df.ϵ_p, df.ϵ_ys)
+    df.m_1 = KM6.m_1.(df.R, df.ϵ_p, df.ϵ_ys)
     df.m_2 = KM620_table_row."m₂".(df.R)
-    df.A_1 = KM620.A_1.(df.σ_ys, df.ϵ_ys, df.m_1)
-    df.A_2 = KM620.A_2.(df.σ_uts, df.m_2)
-    df.σ_utst = KM620.σ_utst.(df.σ_uts, df.m_2)
+    df.A_1 = KM6.A_1.(df.σ_ys, df.ϵ_ys, df.m_1)
+    df.A_2 = KM6.A_2.(df.σ_uts, df.m_2)
+    df.σ_utst = KM6.σ_utst.(df.σ_uts, df.m_2)
     df.σ_p = find_proportional_limit(df)
 
     # KM-620 Vector Quantities
@@ -478,13 +478,13 @@ function create_master_table(
         stop = df.σ_utst[i],
         length = num_plastic_points,
     ) for i in rowiterator]
-    df.H = [KM620.H.(df.σ_t[i], df.σ_ys[i], df.σ_uts[i], df.K[i]) for i in rowiterator]
-    df.ϵ_1 = [KM620.ϵ_1.(df.σ_t[i], df.A_1[i], df.m_1[i]) for i in rowiterator]
-    df.ϵ_2 = [KM620.ϵ_2.(df.σ_t[i], df.A_2[i], df.m_2[i]) for i in rowiterator]
-    df.γ_1 = [KM620.γ_1.(df.ϵ_1[i], df.H[i]) for i in rowiterator]
-    df.γ_2 = [KM620.γ_2.(df.ϵ_2[i], df.H[i]) for i in rowiterator]
+    df.H = [KM6.H.(df.σ_t[i], df.σ_ys[i], df.σ_uts[i], df.K[i]) for i in rowiterator]
+    df.ϵ_1 = [KM6.ϵ_1.(df.σ_t[i], df.A_1[i], df.m_1[i]) for i in rowiterator]
+    df.ϵ_2 = [KM6.ϵ_2.(df.σ_t[i], df.A_2[i], df.m_2[i]) for i in rowiterator]
+    df.γ_1 = [KM6.γ_1.(df.ϵ_1[i], df.H[i]) for i in rowiterator]
+    df.γ_2 = [KM6.γ_2.(df.ϵ_2[i], df.H[i]) for i in rowiterator]
     df.γ_total = df.γ_1 .+ df.γ_2
-    df.ϵ_ts = [KM620.ϵ_ts.(df.σ_t[i], df.E_y[i], df.γ_1[i], df.γ_2[i], df.ϵ_p[i]) for i in rowiterator]
+    df.ϵ_ts = [KM6.ϵ_ts.(df.σ_t[i], df.E_y[i], df.γ_1[i], df.γ_2[i], df.ϵ_p[i]) for i in rowiterator]
 
     return df
 end

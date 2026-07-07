@@ -54,7 +54,7 @@ function get_user_input()
                 Int,
                 KM620_coefficients_table_material_category_number_default
             )
-            KM620_coefficients_table_material_category = KM620.coefficients_table."Material"[
+            KM620_coefficients_table_material_category = KM6.coefficients_table."Material"[
                 KM620_coefficients_table_material_category_number
             ]
             valid = true
@@ -132,8 +132,8 @@ Returns a terminal panel with the material information from Table KM-620.
 Call `print` or `println` on the result to diplay it.
 """
 function tableKM620_options()
-    table = select(KM620.coefficients_table, "Material")
-    notes = join(values(metadata(KM620.coefficients_table)), "\n")
+    table = select(KM6.coefficients_table, "Material")
+    notes = join(values(metadata(KM6.coefficients_table)), "\n")
     panel = @nested_panels Panel(
         Term.Table(
             hcat(1:nrow(table), table."Material"),
