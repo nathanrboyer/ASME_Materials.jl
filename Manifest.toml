@@ -508,8 +508,7 @@ version = "0.25.129"
 
 [[deps.Div3]]
 deps = ["CSV", "DataFrames", "HypertextLiteral", "InteractiveUtils", "LaTeXStrings", "Latexify", "Markdown", "PlutoUI", "PrettyTables"]
-git-tree-sha1 = "91f31f725894490173a00b74a7b9dca4f4b2606b"
-repo-rev = "main"
+path = "C:\\Users\\mframe.AIP\\Desktop\\Julia_Git\\Div3"
 repo-url = "https://github.com/nathanrboyer/Div3.jl.git"
 uuid = "ab82a220-3fe6-4d48-8470-cb6afb7bc69a"
 version = "0.0.1"
