@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.12.4"
+julia_version = "1.12.6"
 manifest_format = "2.0"
-project_hash = "41005b61e714f3fe9e92512ee85d179a61152f06"
+project_hash = "70794db695aced84ab6b42e1a698f006e28a3dde"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "d9aaef7c63466eee4de23b4d9dad03629df54bea"
@@ -16,7 +16,7 @@ weakdeps = ["ChainRulesCore", "ConstructionBase", "EnzymeCore"]
     ADTypesEnzymeCoreExt = "EnzymeCore"
 
 [[deps.ASME_Materials]]
-deps = ["ColorSchemes", "DataFrames", "Div3", "GLMakie", "Interpolations", "Latexify", "NativeFileDialog", "OrderedCollections", "PrettyTables", "SimpleNonlinearSolve", "Term", "XLSX"]
+deps = ["ColorSchemes", "DataFrames", "Div3", "GLMakie", "Interpolations", "NativeFileDialog", "OrderedCollections", "SimpleNonlinearSolve", "Term", "XLSX"]
 path = "."
 uuid = "e596c8da-274e-4954-bc0b-801dea4796a4"
 version = "0.1.0"
@@ -508,7 +508,8 @@ version = "0.25.129"
 
 [[deps.Div3]]
 deps = ["CSV", "DataFrames", "HypertextLiteral", "InteractiveUtils", "LaTeXStrings", "Latexify", "Markdown", "PlutoUI", "PrettyTables"]
-path = "C:\\Users\\mframe.AIP\\Desktop\\Julia_Git\\Div3"
+git-tree-sha1 = "96222ecc689c1a97395d235b8a71aa2960459573"
+repo-rev = "main"
 repo-url = "https://github.com/nathanrboyer/Div3.jl.git"
 uuid = "ab82a220-3fe6-4d48-8470-cb6afb7bc69a"
 version = "0.0.1"
@@ -797,12 +798,6 @@ git-tree-sha1 = "45288942190db7c5f760f59c04495064eedf9340"
 uuid = "b0724c58-0f36-5564-988d-3bb0596ebc4a"
 version = "0.22.4+0"
 
-[[deps.Ghostscript_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Zlib_jll"]
-git-tree-sha1 = "38044a04637976140074d0b0621c1edf0eb531fd"
-uuid = "61579ee1-b43e-5ca0-a5da-69d92c66a64b"
-version = "9.55.1+0"
-
 [[deps.Giflib_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
 git-tree-sha1 = "6570366d757b50fabae9f4315ad74d2e40c0560a"
@@ -1086,10 +1081,10 @@ uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 version = "1.4.0"
 
 [[deps.Latexify]]
-deps = ["Format", "Ghostscript_jll", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Requires"]
-git-tree-sha1 = "44f93c47f9cd6c7e431f2f2091fcba8f01cd7e8f"
+deps = ["Format", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Requires"]
+git-tree-sha1 = "4f34eaabe49ecb3fb0d58d6015e32fd31a733199"
 uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
-version = "0.16.10"
+version = "0.16.8"
 
     [deps.Latexify.extensions]
     DataFramesExt = "DataFrames"
