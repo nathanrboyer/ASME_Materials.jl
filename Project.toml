@@ -1,6 +1,6 @@
 name = "ASME_Materials"
 uuid = "e596c8da-274e-4954-bc0b-801dea4796a4"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["nathanrboyer <nathanrobertboyer@gmail.com>"]
 
 [workspace]
